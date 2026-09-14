@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.Barakah {
+  height: calc(100vh - 80px);
+  background-image: url("/barakahbackground.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .Barakah {
+    height: calc(100vh - 70px);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+.BarakahContent{
+  background-color: rgb(99, 179, 119);
+  border: 4px solid rgb(6, 90, 41);
+  border-radius: 20%;
+   margin-top: auto;
+  margin-bottom: 40px;
+
+  padding: 25px 40px;
+  text-align: center;
+}
+.BarakahContent h1
+{
+  font-size: 48px;
+  margin-bottom: 15px;
+ }
+ .store-logo{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+ }
+ .logo-name
+ {
+   display: flex;
+  align-items: center;
+  gap: 12px;
+ }
+ .logo-name h2
+ {
+   margin: 0;
+  font-size: 28px;
+ }
+.BarakahContent{
+  font-size: 20px;
+  margin-bottom: 100px;
+
+}
+.BarakahContent h3{
+  color: white;
+}
+.shop-btn {
+  background: linear-gradient(135deg, #054c20, #0b7a3b);
+  color: white;
+  border: 2px solid #ffffff;
+  padding: 13px 32px;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+.shop-btn:hover {
+  background: linear-gradient(135deg, #0b7a3b, #054c20);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.shop-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #06ab59;
+}
+
+nav h2 {
+  color: white;
+}
+
+nav div {
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+nav a:hover {
+  color: #ff9800;
+}
