@@ -217,6 +217,171 @@
         .products-page h1 { font-size: 30px; }
       }
 
+
+            /* ================= Contact / Login ================= */
+      .login-page {
+        min-height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(39, 128, 68, 0.14), transparent 42%),
+          radial-gradient(circle at 88% 82%, rgba(5, 76, 32, 0.12), transparent 46%),
+          #f5f8f4;
+      }
+      .login-card {
+        width: 100%;
+        max-width: 900px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(5, 76, 32, 0.18);
+      }
+
+      /* Left green panel */
+      .login-side {
+        background: linear-gradient(160deg, #054c20 0%, #0b7a3b 100%);
+        color: white;
+        padding: 48px 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 14px;
+      }
+      .login-side img {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid rgba(255, 255, 255, 0.85);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      }
+      .login-side h2 { font-size: 28px; letter-spacing: 0.3px; }
+      .login-side p { font-size: 16px; line-height: 1.7; opacity: 0.92; max-width: 260px; }
+
+      /* Right form side */
+      .login-form-wrap { padding: 48px 40px; }
+      .login-form-wrap h1 { color: #245c32; font-size: 32px; margin-bottom: 6px; }
+      .login-subtitle { color: #777; font-size: 15px; margin-bottom: 28px; }
+
+      .field { margin-bottom: 18px; }
+      .field label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #3b4a3f;
+        margin-bottom: 7px;
+      }
+      .field input {
+        width: 100%;
+        padding: 13px 15px;
+        border: 1.5px solid #d8e2d9;
+        border-radius: 10px;
+        font-size: 15px;
+        background: #fbfdfb;
+        outline: none;
+        transition: 0.25s;
+      }
+      .field input:focus {
+        border-color: #278044;
+        box-shadow: 0 0 0 4px rgba(39, 128, 68, 0.12);
+        background: white;
+      }
+      .field.has-error input { border-color: #d62828; }
+      .field.has-error input:focus { box-shadow: 0 0 0 4px rgba(214, 40, 40, 0.12); }
+      .field-error { color: #d62828; font-size: 13px; margin-top: 6px; }
+
+      .password-box { position: relative; }
+      .password-box input { padding-right: 72px; }
+      .toggle-pass {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #278044;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 6px 10px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .toggle-pass:hover { background: #e8f5e9; }
+
+      .login-options {
+        display: flex;
+        align-items: center;
+        margin: 4px 0 22px;
+        font-size: 14px;
+        color: #555;
+      }
+      .remember { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+      .remember input { width: 16px; height: 16px; accent-color: #278044; cursor: pointer; }
+
+      .login-btn {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 6px 16px rgba(27, 94, 32, 0.28);
+      }
+      .login-btn:hover {
+        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(27, 94, 32, 0.34);
+      }
+      .login-btn:active { transform: translateY(0); }
+      .login-btn:focus-visible,
+      .toggle-pass:focus-visible {
+        outline: 3px solid rgba(39, 128, 68, 0.45);
+        outline-offset: 2px;
+      }
+
+      .login-notice {
+        margin-top: 16px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        font-size: 14px;
+        background: #eaf6ec;
+        color: #1f6837;
+        border: 1px solid #cfe8d3;
+      }
+      .login-help {
+        margin-top: 24px;
+        padding-top: 18px;
+        border-top: 1px solid #eee;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+      }
+      .login-help a { color: #128c4a; font-weight: 700; text-decoration: none; }
+      .login-help a:hover { text-decoration: underline; }
+
+      @media (max-width: 800px) {
+        .login-page { padding: 24px 14px; align-items: flex-start; }
+        .login-card { grid-template-columns: 1fr; max-width: 460px; }
+        .login-side { padding: 26px 24px; flex-direction: row; gap: 14px; text-align: left; }
+        .login-side img { width: 56px; height: 56px; border-width: 3px; }
+        .login-side h2 { font-size: 22px; }
+        .login-side p { display: none; }
+        .login-form-wrap { padding: 28px 22px 30px; }
+        .login-form-wrap h1 { font-size: 28px; }
+      }
+
+
+      
       /* ================= About ================= */
       .about-page {
         min-height: 100vh;
@@ -781,12 +946,134 @@
         );
       }
 
-      /* ================= Contact ================= */
+       /* ================= Contact (Login) ================= */
       function Contact() {
+        const [identifier, setIdentifier] = useState("");
+        const [password, setPassword] = useState("");
+        const [showPassword, setShowPassword] = useState(false);
+        const [remember, setRemember] = useState(false);
+        const [errors, setErrors] = useState({});
+        const [notice, setNotice] = useState("");
+
+        const validate = () => {
+          const newErrors = {};
+          const value = identifier.trim();
+          const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+          const isPhone = /^(?:\+?88)?01[3-9]\d{8}$/.test(value);
+
+          if (!value) {
+            newErrors.identifier = "Enter your email or mobile number.";
+          } else if (!isEmail && !isPhone) {
+            newErrors.identifier = "Enter a valid email or a mobile number like 017XXXXXXXX.";
+          }
+
+          if (!password) {
+            newErrors.password = "Enter your password.";
+          } else if (password.length < 6) {
+            newErrors.password = "Password must be at least 6 characters.";
+          }
+
+          return newErrors;
+        };
+
+        const handleLogin = (e) => {
+          e.preventDefault();
+
+          const newErrors = validate();
+          setErrors(newErrors);
+          setNotice("");
+
+          if (Object.keys(newErrors).length > 0) return;
+
+          // TODO: ekhane Firebase Auth (ba nijer server) diye asol login korben.
+          setNotice("Details look good, but login is not connected to a server yet.");
+        };
+
         return (
-          <div>
-            <h1>Contact Us</h1>
-            <p>You can contact us here.</p>
+          <div className="login-page">
+            <div className="login-card">
+              {/* Left green panel */}
+              <div className="login-side">
+                <img src={img("logo.jpeg")} alt="Barakah Agro logo" />
+                <h2>Barakah Agro</h2>
+                <p>খাঁটি সরিষার তেল ও শুকনো পাতা — সরাসরি আপনার ঘরে।</p>
+              </div>
+
+              {/* Login form */}
+              <div className="login-form-wrap">
+                <h1>Login</h1>
+                <p className="login-subtitle">Welcome back! Please login to your account.</p>
+
+                <form onSubmit={handleLogin} noValidate>
+                  <div className={`field ${errors.identifier ? "has-error" : ""}`}>
+                    <label htmlFor="login-id">Email or Mobile Number</label>
+                    <input
+                      id="login-id"
+                      type="text"
+                      autoComplete="username"
+                      placeholder="you@example.com or 017XXXXXXXX"
+                      value={identifier}
+                      aria-invalid={errors.identifier ? "true" : "false"}
+                      onChange={(e) => {
+                        setIdentifier(e.target.value);
+                        setErrors({ ...errors, identifier: undefined });
+                      }}
+                    />
+                    {errors.identifier && <p className="field-error">{errors.identifier}</p>}
+                  </div>
+
+                  <div className={`field ${errors.password ? "has-error" : ""}`}>
+                    <label htmlFor="login-password">Password</label>
+                    <div className="password-box">
+                      <input
+                        id="login-password"
+                        type={showPassword ? "text" : "password"}
+                        autoComplete="current-password"
+                        placeholder="Enter your password"
+                        value={password}
+                        aria-invalid={errors.password ? "true" : "false"}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                          setErrors({ ...errors, password: undefined });
+                        }}
+                      />
+                      <button
+                        type="button"
+                        className="toggle-pass"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? "Hide" : "Show"}
+                      </button>
+                    </div>
+                    {errors.password && <p className="field-error">{errors.password}</p>}
+                  </div>
+
+                  <div className="login-options">
+                    <label className="remember">
+                      <input
+                        type="checkbox"
+                        checked={remember}
+                        onChange={(e) => setRemember(e.target.checked)}
+                      />
+                      Remember me
+                    </label>
+                  </div>
+
+                  <button type="submit" className="login-btn">
+                    Login
+                  </button>
+
+                  {notice && <div className="login-notice">{notice}</div>}
+                </form>
+
+                <p className="login-help">
+                  Need help?{" "}
+                  <a href="https://wa.me/8801786239185" target="_blank" rel="noreferrer">
+                    Message us on WhatsApp
+                  </a>
+                </p>
+              </div>
+            </div>
           </div>
         );
       }
