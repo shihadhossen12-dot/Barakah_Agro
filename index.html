@@ -1,13 +1,1112 @@
 <!doctype html>
-<html lang="en">
+<html lang="bn">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ecommerce</title>
+    <title>Barakah Agro</title>
+
+    <style>
+      /* ================= Global ================= */
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      /* ================= Home ================= */
+      .Barakah {
+        height: calc(100vh - 80px);
+        background-image: url("public/barakahbackground.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      @media (max-width: 768px) {
+        .Barakah {
+          height: calc(100vh - 70px);
+          background-size: 100% 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+      .BarakahContent {
+        background-color: rgb(99, 179, 119);
+        border: 4px solid rgb(6, 90, 41);
+        border-radius: 20%;
+        margin-top: auto;
+        margin-bottom: 100px;
+        padding: 25px 40px;
+        text-align: center;
+        font-size: 20px;
+      }
+      .BarakahContent h3 { color: white; }
+      .shop-btn {
+        background: linear-gradient(135deg, #054c20, #0b7a3b);
+        color: white;
+        border: 2px solid #ffffff;
+        padding: 13px 32px;
+        border-radius: 30px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 30px;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+      }
+      .shop-btn:hover {
+        background: linear-gradient(135deg, #0b7a3b, #054c20);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+      }
+      .shop-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ================= Navbar ================= */
+      nav {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 30px;
+        background: rgb(16, 88, 4);
+        gap: 20px;
+        box-shadow: 0 5px 15px rgba(10, 195, 224, 0.3);
+        position: relative;
+        z-index: 1000;
+      }
+      nav h2 { color: white; }
+      nav div { display: flex; }
+      .logo-name {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .store-logo {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+      .logo-name h2 { margin: 0; font-size: 22px; white-space: nowrap; }
+      nav > div:last-child {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+      nav a {
+        color: #f4f1f1;
+        text-decoration: none;
+        font-size: 16px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+      nav a:hover {
+        color: #2e7d32;
+        background-color: #e8f5e9;
+        border-bottom: 3px solid #2e7d32;
+        transform: translateY(-2px);
+      }
+      @media (max-width: 768px) {
+        nav { padding: 10px 15px; flex-direction: column; gap: 12px; }
+        .logo-name { width: 100%; justify-content: center; }
+        .store-logo { width: 45px; height: 45px; }
+        .logo-name h2 { font-size: 20px; }
+        nav > div:last-child {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 10px 18px;
+        }
+        nav a { font-size: 14px; }
+      }
+      @media (max-width: 480px) {
+        nav { padding: 10px; }
+        .logo-name h2 { font-size: 18px; }
+        .store-logo { width: 40px; height: 40px; }
+        nav > div:last-child { gap: 8px 14px; }
+        nav a { font-size: 13px; }
+      }
+
+      /* ================= Products ================= */
+      .products-page {
+        padding: 50px 30px;
+        text-align: center;
+        background: #f7faf7;
+        min-height: 100vh;
+      }
+      .products-page h1 { font-size: 38px; color: #245c32; margin-bottom: 8px; }
+      .products-page > p { font-size: 18px; color: #666; margin-bottom: 40px; }
+      .products-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 1150px;
+        margin: 0 auto;
+      }
+      .product-card {
+        background: white;
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: 0.3s ease;
+      }
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
+      }
+      .product-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+        border-radius: 12px;
+        margin-bottom: 10px;
+      }
+      .product-card h2 { font-size: 23px; color: #245c32; margin: 10px 0; }
+      .product-card p { color: #666; font-size: 15px; }
+      .product-card select {
+        width: 100%;
+        padding: 11px;
+        margin: 15px 0;
+        border: 1px solid #cfd8d0;
+        border-radius: 8px;
+        font-size: 15px;
+        background: white;
+        cursor: pointer;
+        outline: none;
+      }
+      .product-card select:focus { border-color: #357a46; }
+      .price { margin: 10px 0; font-size: 23px; font-weight: bold; }
+      .old-price {
+        text-decoration: line-through;
+        color: #999;
+        font-size: 17px;
+        margin-right: 10px;
+      }
+      .price span:last-child { color: #d62828; font-size: 23px; font-weight: bold; }
+      .discount {
+        color: #2e7d32 !important;
+        font-weight: bold;
+        font-size: 15px !important;
+        margin: 5px 0 15px;
+      }
+      .product-card button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #245c32;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .product-card button:hover { background: #174522; transform: scale(1.02); }
+      .added-btn { animation: cartAdded 0.4s ease; }
+      @keyframes cartAdded {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+        100% { transform: scale(1); }
+      }
+      @media (max-width: 768px) {
+        .products-container { grid-template-columns: 1fr; }
+        .products-page { padding: 30px 15px; }
+        .products-page h1 { font-size: 30px; }
+      }
+
+      /* ================= About ================= */
+      .about-page {
+        min-height: 100vh;
+        padding: 50px 30px;
+        background: #f7faf7;
+        text-align: center;
+      }
+      .about-page h1 { color: #245c32; font-size: 36px; margin-bottom: 30px; }
+      .slider-wrapper {
+        width: 1100px;
+        max-width: 100%;
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+        padding: 10px 0;
+      }
+      .reviews-container {
+        display: flex;
+        gap: 25px;
+        width: max-content;
+        transition: transform 0.8s ease-in-out;
+      }
+      .photo-box {
+        flex: 0 0 350px;
+        height: 280px;
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid #eee;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        transition: 0.5s;
+      }
+      .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+      .active-photo { transform: scale(1.04); border: 3px solid #054c20; }
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 45px;
+        height: 45px;
+        border: none;
+        border-radius: 50%;
+        background: #054c20;
+        color: white;
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+      }
+      .slider-btn:hover { background: #08752f; transform: translateY(-50%) scale(1.1); }
+      .left-btn { left: 10px; }
+      .right-btn { right: 10px; }
+
+      /* ================= Cart ================= */
+      .cart-page {
+        min-height: 100vh;
+        padding: 50px 30px;
+        background: #f7faf7;
+        text-align: center;
+      }
+      .cart-page h1 { color: #245c32; font-size: 36px; margin-bottom: 35px; }
+      .cart-container { max-width: 900px; margin: 0 auto; }
+      .cart-item {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        background: white;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+        text-align: left;
+        transition: 0.3s;
+      }
+      .cart-item:hover { transform: translateY(-3px); }
+      .cart-item img {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+      .cart-details { flex: 1; }
+      .cart-details h2 { color: #245c32; margin: 0 0 10px; }
+      .cart-package { color: #666; margin: 5px 0; }
+      .cart-price { color: #d62828; font-size: 20px; font-weight: bold; margin: 8px 0; }
+      .delete-btn {
+        background: #d62828;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: 0.3s;
+      }
+      .delete-btn:hover { background: #a91f1f; transform: scale(1.05); }
+      .empty-cart {
+        background: white;
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 50px 20px;
+        border-radius: 18px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+      .empty-icon { font-size: 60px; margin-bottom: 15px; }
+      .empty-cart h2 { color: #245c32; }
+      .empty-cart p { color: #777; }
+      .quantity-control { display: flex; align-items: center; gap: 15px; margin-top: 12px; }
+      .quantity-control button {
+        width: 35px;
+        height: 35px;
+        border: none;
+        border-radius: 8px;
+        background: #245c32;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .quantity-control button:hover { background: #174522; }
+      .quantity-control span {
+        font-size: 18px;
+        font-weight: bold;
+        min-width: 25px;
+        text-align: center;
+      }
+      .cart-total {
+        max-width: 900px;
+        margin: 0 auto 25px;
+        background: rgb(12, 214, 106);
+        padding: 18px 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+        text-align: right;
+      }
+      .cart-total h2 { color: #f5f5f3; margin: 0; font-size: 25px; }
+      .checkout-btn {
+        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        letter-spacing: 0.2px;
+      }
+      .checkout-btn:hover {
+        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        transform: translateY(-2px);
+        box-shadow: 0 7px 18px rgba(0, 0, 0, 0.2);
+      }
+      .checkout-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      }
+      @media (max-width: 700px) {
+        .cart-page { padding: 30px 15px; }
+        .cart-item { flex-direction: column; text-align: center; }
+        .cart-item img { width: 150px; height: 150px; }
+        .delete-btn { width: 100%; }
+      }
+
+      /* ================= Checkout ================= */
+      .checkout-page {
+        min-height: 100vh;
+        padding: 50px 30px;
+        background: #f5f8f4;
+        font-family: Arial, sans-serif;
+      }
+      .checkout-page > h1 {
+        text-align: center;
+        margin-bottom: 35px;
+        color: #245c35;
+        font-size: 34px;
+      }
+      .checkout-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: start;
+      }
+      .order-summary,
+      .checkout-form {
+        background: white;
+        padding: 28px;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e4eee5;
+      }
+      .order-summary h2,
+      .checkout-form h2 {
+        margin-top: 0;
+        margin-bottom: 22px;
+        color: #245c35;
+        font-size: 24px;
+        border-bottom: 2px solid #e8f1e9;
+        padding-bottom: 15px;
+      }
+      .checkout-product {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #eeeeee;
+      }
+      .checkout-product img {
+        width: 75px;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+      }
+      .checkout-product h3 { margin: 0 0 7px; color: #333; font-size: 17px; }
+      .checkout-product p { margin: 4px 0; color: #777; font-size: 14px; }
+      .checkout-product strong {
+        display: block;
+        margin-top: 6px;
+        color: #278044;
+        font-size: 16px;
+      }
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        color: #555;
+        font-size: 16px;
+      }
+      .price-row span:last-child { font-weight: 600; color: #333; }
+      .total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        padding-top: 18px;
+        border-top: 2px solid #dfe9e0;
+        color: #245c35;
+        font-size: 21px;
+        font-weight: bold;
+      }
+      .total-row span:last-child { color: #16803c; }
+      .checkout-form input[type="text"],
+      .checkout-form input[type="tel"],
+      .checkout-form textarea {
+        width: 100%;
+        padding: 14px 15px;
+        margin-bottom: 15px;
+        border: 1px solid #d8e2d9;
+        border-radius: 10px;
+        font-size: 15px;
+        outline: none;
+        transition: 0.3s;
+        background: #fbfdfb;
+      }
+      .checkout-form input[type="text"]:focus,
+      .checkout-form input[type="tel"]:focus,
+      .checkout-form textarea:focus {
+        border-color: #2d8a49;
+        box-shadow: 0 0 0 3px rgba(45, 138, 73, 0.1);
+        background: white;
+      }
+      .checkout-form textarea { resize: vertical; }
+      .delivery-section {
+        background: #f4f9f4;
+        border: 1px solid #dcebdd;
+        border-radius: 12px;
+        padding: 18px;
+        margin: 5px 0 20px;
+      }
+      .delivery-section h3 { margin: 0 0 14px; color: #245c35; font-size: 17px; }
+      .delivery-section label {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin: 11px 0;
+        color: #444;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .delivery-section input[type="radio"] {
+        width: 17px;
+        height: 17px;
+        accent-color: #278044;
+        cursor: pointer;
+      }
+      .checkout-form button {
+        width: 100%;
+        border: none;
+        padding: 14px;
+        margin-top: 8px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .checkout-form button[type="submit"] { background: #278044; color: white; }
+      .checkout-form button[type="submit"]:hover {
+        background: #1f6837;
+        transform: translateY(-2px);
+      }
+      .checkout-form button[type="button"] { background: #25d366; color: white; }
+      .checkout-form button[type="button"]:hover {
+        background: #1ebe5d;
+        transform: translateY(-2px);
+      }
+      @media (max-width: 800px) {
+        .checkout-page { padding: 30px 15px; }
+        .checkout-container { grid-template-columns: 1fr; gap: 20px; }
+        .checkout-page > h1 { font-size: 28px; }
+        .order-summary, .checkout-form { padding: 22px; }
+      }
+    </style>
   </head>
+
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- React + Babel (CDN) -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const { useState, useEffect } = React;
+
+      // Chhobir folder. index.html er pashe "public" folder thakle eta thik ache.
+      const img = (name) => "public/" + name;
+
+      /* ================= Simple Router (#/products etc.) ================= */
+      function useHashRoute() {
+        const getPath = () => window.location.hash.replace(/^#/, "") || "/";
+        const [path, setPath] = useState(getPath);
+
+        useEffect(() => {
+          const onChange = () => {
+            setPath(getPath());
+            window.scrollTo(0, 0);
+          };
+          window.addEventListener("hashchange", onChange);
+          return () => window.removeEventListener("hashchange", onChange);
+        }, []);
+
+        return path;
+      }
+
+      function Link({ to, children }) {
+        return <a href={"#" + to}>{children}</a>;
+      }
+
+      /* ================= Navbar ================= */
+      function Navbar() {
+        return (
+          <nav>
+            <div className="logo-name">
+              <img src={img("logo.jpeg")} alt="Barakah Store Logo" className="store-logo" />
+              <h2>Barakah Agro </h2>
+            </div>
+
+            <div>
+              <Link to="/">Home</Link>
+              <Link to="/products">Products</Link>
+              <Link to="/about">About</Link>
+              <Link to="/contact">Contact</Link>
+              <Link to="/cart">Cart 🛒</Link>
+            </div>
+          </nav>
+        );
+      }
+
+      /* ================= Home ================= */
+      function Home() {
+        return (
+          <section className="Barakah">
+            <div className="BarakahContent">
+              <h3>Find your Favourite product here</h3>
+
+              <Link to="/products">
+                <button className="shop-btn">Shop Now</button>
+              </Link>
+            </div>
+          </section>
+        );
+      }
+
+      /* ================= Products ================= */
+      const products = [
+        {
+          id: 1,
+          name: "সরিষার তেল",
+          description: "কাঠের ঘানিতে ভাঙ্গা খাঁটি সরিষার তেল",
+          image: img("sorisa5liter.png"), // 1 liter er chhobi chaile: img("product_one_oil.png")
+          packages: [
+            { label: "১ লিটার", price: 260 },
+            { label: "২ লিটার", price: 520 },
+            { label: "৩ লিটার", price: 780 },
+            { label: "৪ লিটার", price: 1040 },
+            { label: "৫ লিটার", price: 1300 },
+          ],
+        },
+        {
+          id: 2,
+          name: "শুকনো সাজনা পাতা",
+          image: img("sajna-pata.jpeg"),
+          packages: [
+            { label: "২৫০ গ্রাম ~ ১ প্যাকেট", oldPrice: 375, price: 375 },
+            { label: "৫০০ গ্রাম ~ ২ প্যাকেট", oldPrice: 750, price: 620, discount: "Save ৳130" },
+            { label: "১ কেজি ~ ৪ প্যাকেট", oldPrice: 1500, price: 1150, discount: "Save ৳350" },
+          ],
+        },
+        {
+          id: 3,
+          name: "শুকনো পাট পাতা",
+          image: img("patpataupdate.jpeg"),
+          packages: [
+            { label: "২৫০ গ্রাম ~ ১ প্যাকেট", oldPrice: 300, price: 300 },
+            { label: "৫০০ গ্রাম ~ ২ প্যাকেট", oldPrice: 600, price: 570, discount: "Save ৳30" },
+            { label: "১ কেজি ~ ৪ প্যাকেট", oldPrice: 1200, price: 1080, discount: "Save ৳120" },
+          ],
+        },
+      ];
+
+      function Products({ addToCart }) {
+        const [selectedPackages, setSelectedPackages] = useState({});
+        const [addedProduct, setAddedProduct] = useState(null);
+
+        const handlePackageChange = (productId, packageIndex) => {
+          setSelectedPackages({ ...selectedPackages, [productId]: packageIndex });
+        };
+
+        const handleAddToCart = (product) => {
+          const selectedIndex = selectedPackages[product.id] || 0;
+          const selectedPackage = product.packages[selectedIndex];
+
+          const cartProduct = {
+            id: `${product.id}-${selectedIndex}`,
+            name: product.name,
+            image: product.image,
+            package: selectedPackage.label,
+            price: selectedPackage.price,
+          };
+
+          addToCart(cartProduct);
+          setAddedProduct(cartProduct.id);
+
+          setTimeout(() => {
+            setAddedProduct(null);
+          }, 1500);
+        };
+
+        return (
+          <div className="products-page">
+            <h1>Our Products</h1>
+            <p>Welcome to Barakah Agro</p>
+
+            <div className="products-container">
+              {products.map((product) => {
+                const selectedIndex = selectedPackages[product.id] || 0;
+                const selectedPackage = product.packages[selectedIndex];
+                const isAdded = addedProduct === `${product.id}-${selectedIndex}`;
+
+                return (
+                  <div className="product-card" key={product.id}>
+                    <img src={product.image} alt={product.name} />
+
+                    <h2>{product.name}</h2>
+
+                    {product.description && <p>{product.description}</p>}
+
+                    <select
+                      value={selectedIndex}
+                      onChange={(e) => handlePackageChange(product.id, Number(e.target.value))}
+                    >
+                      {product.packages.map((pkg, index) => (
+                        <option key={index} value={index}>
+                          {pkg.label}
+                        </option>
+                      ))}
+                    </select>
+
+                    <div className="price">
+                      {selectedPackage.oldPrice &&
+                        selectedPackage.oldPrice !== selectedPackage.price && (
+                          <span className="old-price">৳ {selectedPackage.oldPrice}</span>
+                        )}
+                      <span>৳ {selectedPackage.price}</span>
+                    </div>
+
+                    {selectedPackage.discount && (
+                      <p className="discount">🔥 {selectedPackage.discount}</p>
+                    )}
+
+                    <button
+                      className={isAdded ? "added-btn" : ""}
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      {isAdded ? "✓ Added to Cart" : "Add to Cart"}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      }
+
+      /* ================= About ================= */
+      const photos = [
+        img("customer1.png"),
+        img("customer2.png"),
+        img("customer3.png"),
+        img("customer4.png"),
+        img("customer5.png"),
+      ];
+
+      function About() {
+        const [currentIndex, setCurrentIndex] = useState(0);
+
+        return (
+          <div className="about-page">
+            <h1>Customer Reviews</h1>
+
+            <div className="slider-wrapper">
+              <button
+                className="slider-btn left-btn"
+                onClick={() => setCurrentIndex((currentIndex - 1 + photos.length) % photos.length)}
+              >
+                ❮
+              </button>
+
+              <div
+                className="reviews-container"
+                style={{ transform: `translateX(-${currentIndex * 375}px)` }}
+              >
+                {photos.map((photo, index) => (
+                  <div
+                    className={`photo-box ${index === currentIndex ? "active-photo" : ""}`}
+                    key={index}
+                  >
+                    <img src={photo} alt={`Customer ${index + 1}`} />
+                  </div>
+                ))}
+              </div>
+
+              <button
+                className="slider-btn right-btn"
+                onClick={() => setCurrentIndex((currentIndex + 1) % photos.length)}
+              >
+                ❯
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      /* ================= Contact ================= */
+      function Contact() {
+        return (
+          <div>
+            <h1>Contact Us</h1>
+            <p>You can contact us here.</p>
+          </div>
+        );
+      }
+
+      /* ================= Cart ================= */
+      function Cart({ cart, removeFromCart, increaseQuantity, decreaseQuantity }) {
+        const total = cart.reduce(
+          (sum, product) => sum + product.price * (product.quantity || 1),
+          0
+        );
+
+        return (
+          <div className="cart-page">
+            <h1>Shopping Cart 🛒</h1>
+
+            {cart.length === 0 ? (
+              <div className="empty-cart">
+                <div className="empty-icon">🛒</div>
+                <h2>Your cart is empty</h2>
+                <p>Add some products to your cart.</p>
+              </div>
+            ) : (
+              <>
+                <div className="cart-total">
+                  <h2>Total: ৳ {total}</h2>
+                </div>
+
+                <div className="cart-container">
+                  {cart.map((product) => (
+                    <div className="cart-item" key={product.id}>
+                      <img src={product.image} alt={product.name} />
+
+                      <div className="cart-details">
+                        <h2>{product.name}</h2>
+
+                        {product.package && (
+                          <p className="cart-package">Package: {product.package}</p>
+                        )}
+
+                        <p className="cart-price">৳ {product.price * (product.quantity || 1)}</p>
+
+                        <div className="quantity-control">
+                          <button onClick={() => decreaseQuantity(product.id)}>−</button>
+                          <span>{product.quantity || 1}</span>
+                          <button onClick={() => increaseQuantity(product.id)}>+</button>
+                        </div>
+                      </div>
+
+                      <button className="delete-btn" onClick={() => removeFromCart(product.id)}>
+                        🗑 Delete
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                <Link to="/checkout">
+                  <button className="checkout-btn">🛒 Checkout / Order Now</button>
+                </Link>
+              </>
+            )}
+          </div>
+        );
+      }
+
+      /* ================= Checkout ================= */
+      function Checkout({ cart }) {
+        const [name, setName] = useState("");
+        const [phone, setPhone] = useState("");
+        const [address, setAddress] = useState("");
+        const [deliveryLocation, setDeliveryLocation] = useState("");
+
+        const total = cart.reduce(
+          (sum, product) => sum + product.price * (product.quantity || 1),
+          0
+        );
+
+        const deliveryCharge =
+          deliveryLocation === "inside" ? 80 : deliveryLocation === "outside" ? 130 : 0;
+
+        const finalTotal = total + deliveryCharge;
+
+        const handleOrder = (e) => {
+          e.preventDefault();
+
+          if (!deliveryLocation) {
+            alert("Please select your delivery location.");
+            return;
+          }
+
+          alert("Your order has been placed successfully! 🎉");
+        };
+
+        const handleWhatsAppOrder = () => {
+          if (!name || !phone || !address) {
+            alert("Please fill in your Name, Phone Number and Address.");
+            return;
+          }
+
+          if (!deliveryLocation) {
+            alert("Please select your delivery location.");
+            return;
+          }
+
+          const orderDetails = cart
+            .map(
+              (product) =>
+                `${product.name} - ${product.package || ""} - Qty: ${
+                  product.quantity || 1
+                } - ৳${product.price * (product.quantity || 1)}`
+            )
+            .join("\n");
+
+          const deliveryText = deliveryLocation === "inside" ? "Inside Dhaka" : "Outside Dhaka";
+
+          const message = `🛒 *Barakah Agro Order*
+
+👤 Name: ${name}
+
+📱 Phone: ${phone}
+
+📍 Address: ${address}
+
+🚚 Delivery Location: ${deliveryText}
+
+📦 *Order Details:*
+${orderDetails}
+
+💰 Subtotal: ৳${total}
+
+🚚 Delivery Charge: ৳${deliveryCharge}
+
+💵 *Total: ৳${finalTotal}*
+
+Please confirm my order.`;
+
+          const whatsappNumber = "8801786239185";
+          const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+          window.open(whatsappURL, "_blank");
+        };
+
+        return (
+          <div className="checkout-page">
+            <h1>Checkout 📦</h1>
+
+            <div className="checkout-container">
+              {/* Order Summary */}
+              <div className="order-summary">
+                <h2>Your Order</h2>
+
+                {cart.map((product) => (
+                  <div className="checkout-product" key={product.id}>
+                    <img src={product.image} alt={product.name} />
+
+                    <div>
+                      <h3>{product.name}</h3>
+                      {product.package && <p>Package: {product.package}</p>}
+                      <p>Quantity: {product.quantity || 1}</p>
+                      <strong>৳ {product.price * (product.quantity || 1)}</strong>
+                    </div>
+                  </div>
+                ))}
+
+                <div className="price-row">
+                  <span>Subtotal</span>
+                  <span>৳ {total}</span>
+                </div>
+
+                <div className="price-row">
+                  <span>Delivery Charge</span>
+                  <span>{deliveryLocation ? `৳ ${deliveryCharge}` : "Select location"}</span>
+                </div>
+
+                <div className="total-row">
+                  <span>Total Amount</span>
+                  <span>৳ {finalTotal}</span>
+                </div>
+              </div>
+
+              {/* Customer Information */}
+              <div className="checkout-form">
+                <h2>Customer Information</h2>
+
+                <form onSubmit={handleOrder}>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+
+                  <input
+                    type="tel"
+                    placeholder="Mobile Number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
+                  />
+
+                  <textarea
+                    placeholder="Delivery Address"
+                    rows="4"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    required
+                  ></textarea>
+
+                  <div className="delivery-section">
+                    <h3>Delivery Location</h3>
+
+                    <label>
+                      <input
+                        type="radio"
+                        name="delivery"
+                        value="inside"
+                        checked={deliveryLocation === "inside"}
+                        onChange={(e) => setDeliveryLocation(e.target.value)}
+                      />
+                      Inside Dhaka — ৳80
+                    </label>
+
+                    <label>
+                      <input
+                        type="radio"
+                        name="delivery"
+                        value="outside"
+                        checked={deliveryLocation === "outside"}
+                        onChange={(e) => setDeliveryLocation(e.target.value)}
+                      />
+                      Outside Dhaka — ৳130
+                    </label>
+                  </div>
+
+                  <button type="submit">Place Order</button>
+
+                  <button type="button" onClick={handleWhatsAppOrder}>
+                    Order via WhatsApp 📲
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      /* ================= App ================= */
+      function App() {
+        const [cart, setCart] = useState([]);
+        const path = useHashRoute();
+
+        const addToCart = (product) => {
+          setCart((currentCart) => {
+            const existingProduct = currentCart.find((item) => item.id === product.id);
+
+            if (existingProduct) {
+              return currentCart.map((item) =>
+                item.id === product.id
+                  ? { ...item, quantity: (item.quantity || 0) + 1 }
+                  : item
+              );
+            }
+
+            return [...currentCart, { ...product, quantity: 1 }];
+          });
+        };
+
+        const removeFromCart = (productId) => {
+          setCart((currentCart) => currentCart.filter((item) => item.id !== productId));
+        };
+
+        const increaseQuantity = (productId) => {
+          setCart((currentCart) =>
+            currentCart.map((item) =>
+              item.id === productId ? { ...item, quantity: (item.quantity || 1) + 1 } : item
+            )
+          );
+        };
+
+        const decreaseQuantity = (productId) => {
+          setCart((currentCart) =>
+            currentCart.map((item) =>
+              item.id === productId && (item.quantity || 1) > 1
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            )
+          );
+        };
+
+        let page;
+        if (path === "/products") {
+          page = <Products addToCart={addToCart} />;
+        } else if (path === "/about") {
+          page = <About />;
+        } else if (path === "/contact") {
+          page = <Contact />;
+        } else if (path === "/cart") {
+          page = (
+            <Cart
+              cart={cart}
+              removeFromCart={removeFromCart}
+              increaseQuantity={increaseQuantity}
+              decreaseQuantity={decreaseQuantity}
+            />
+          );
+        } else if (path === "/checkout") {
+          page = <Checkout cart={cart} />;
+        } else {
+          page = <Home />;
+        }
+
+        return (
+          <>
+            <Navbar />
+            {page}
+          </>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
   </body>
 </html>
